@@ -1,0 +1,103 @@
+/* RESET & VARIABLES */
+:root {
+    --neon: #00ff41;       /* Hacker Green */
+    --dark: #0a0a0a;       /* Deep Black */
+    --glass: rgba(255, 255, 255, 0.05);
+    --font-main: 'Space Mono', monospace;
+}
+
+body {
+    background-color: var(--dark);
+    color: #e0e0e0;
+    font-family: var(--font-main);
+    margin: 0; padding: 0;
+    overflow-x: hidden;
+}
+
+/* SCANLINE MONITOR EFFECT */
+.scanlines {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none; z-index: 999;
+}
+
+/* NAVIGATION */
+nav {
+    display: flex; justify-content: space-between; padding: 20px 50px;
+    align-items: center; border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+}
+.logo { font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; color: #fff; }
+.dot { color: var(--neon); }
+.links a { color: #fff; text-decoration: none; margin-left: 30px; font-size: 0.9rem; text-transform: uppercase; }
+.links a:hover { color: var(--neon); }
+
+/* HERO SECTION */
+.hero {
+    min-height: 90vh; display: flex; justify-content: center; align-items: center;
+    text-align: center; padding: 0 20px;
+}
+h1 { font-size: 3.5rem; margin: 0; letter-spacing: -2px; color: #fff; }
+.highlight { color: var(--neon); }
+.status { font-size: 0.8rem; margin-bottom: 20px; color: #555; }
+.online { color: var(--neon); font-weight: bold; animation: blink 2s infinite; }
+.bio-text { max-width: 600px; margin: 20px auto; line-height: 1.6; }
+
+/* BUTTONS */
+.btn {
+    padding: 15px 30px; margin: 20px 10px; text-decoration: none;
+    font-weight: bold; border: 1px solid var(--neon); display: inline-block; transition: 0.3s;
+}
+.btn.primary { background: var(--neon); color: var(--dark); }
+.btn.primary:hover { background: transparent; color: var(--neon); box-shadow: 0 0 15px var(--neon); }
+.btn.secondary { color: var(--neon); }
+.btn.secondary:hover { background: rgba(0, 255, 65, 0.1); }
+
+/* PROJECTS & CARDS */
+.projects, .contact { padding: 80px 10%; }
+.section-title { font-size: 2rem; border-left: 5px solid var(--neon); padding-left: 20px; margin-bottom: 40px; color: #fff; }
+
+.project-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+}
+.card {
+    background: var(--glass); border: 1px solid #333; padding: 25px; transition: 0.3s;
+}
+.card:hover { transform: translateY(-10px); border-color: var(--neon); box-shadow: 0 10px 30px -10px rgba(0, 255, 65, 0.2); }
+.card-header i { font-size: 2rem; color: var(--neon); margin-bottom: 15px; }
+.tags span {
+    font-size: 0.7rem; border: 1px solid #555; padding: 5px 10px; margin-right: 5px; border-radius: 20px; display: inline-block; margin-top: 10px;
+}
+
+/* === NEW CODE FOR PROJECT IMAGE === */
+.card-image img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    display: block;
+}
+
+/* GLITCH EFFECT */
+.glitch-text { position: relative; color: white; font-size: 1.5rem; margin: 10px 0; }
+.glitch-text::before, .glitch-text::after {
+    content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--dark);
+}
+.glitch-text::before { left: 2px; text-shadow: -1px 0 red; clip: rect(24px, 550px, 90px, 0); animation: glitch-anim-2 3s infinite linear alternate-reverse; }
+.glitch-text::after { left: -2px; text-shadow: -1px 0 blue; clip: rect(85px, 550px, 140px, 0); animation: glitch-anim-1 2.5s infinite linear alternate-reverse; }
+
+/* CONTACT */
+.contact { text-align: center; }
+.contact-box { background: var(--glass); padding: 50px; border: 1px solid var(--neon); display: inline-block; width: 100%; max-width: 600px; }
+.email-link { display: block; font-size: 1.2rem; color: var(--neon); margin: 20px 0; }
+.socials a { color: #fff; text-decoration: none; font-size: 1.2rem; }
+
+/* FOOTER */
+footer { text-align: center; padding: 20px; font-size: 0.8rem; color: #555; border-top: 1px solid #333; }
+
+/* ANIMATIONS */
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes glitch-anim-1 { 0% { clip: rect(20px, 9999px, 80px, 0); } 100% { clip: rect(100px, 9999px, 20px, 0); } }
+@keyframes glitch-anim-2 { 0% { clip: rect(100px, 9999px, 30px, 0); } 100% { clip: rect(20px, 9999px, 90px, 0); } }
