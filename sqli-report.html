@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intel Report | Advanced SQLi</title>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2913/2913133.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div id="particles-js"></div>
+
+    <nav>
+        <div class="logo">VULNEX<span class="dot">.</span>IO</div>
+        <div class="links">
+            <a href="index.html" class="btn secondary" style="margin: 0; padding: 10px 20px;"><i class="fa-solid fa-arrow-left"></i> Return to Terminal</a>
+        </div>
+    </nav>
+
+    <section class="report-container">
+        <div class="report-header">
+            <h1>Vulnerability Assessment Report</h1>
+            <p>Critical Data Exfiltration & Full Account Takeover</p>
+            <div class="severity-critical">
+                <i class="fa-solid fa-triangle-exclamation"></i> Severity: CRITICAL (CVSS: 10.0)
+            </div>
+            <p style="color: #555; margin-top: 10px;">Discovered By: Alfred Daniel | Vulnex</p>
+        </div>
+
+        <div class="report-section">
+            <h2>1. Executive Summary & Business Impact</h2>
+            <p>Following the successful mapping of the backend database architecture, a targeted exploitation phase was initiated on the category filtering mechanism. The initial vulnerability was successfully escalated to achieve Full Data Exfiltration and Complete Account Takeover (ATO).</p>
+            <p><strong>Business Risk:</strong> The impact of this vulnerability is catastrophic. By injecting a custom SQL query, an external, unauthenticated attacker can force the database to dump the contents of hidden tables directly onto the public webpage. In this simulation, the <code>users</code> table was targeted, resulting in the immediate theft of the administrator credentials. This allows a threat actor to bypass all authentication, seize total control of the application, and compromise all user data, leading to severe regulatory fines and irreversible brand damage.</p>
+        </div>
+
+        <div class="report-section">
+            <h2>2. Technical Proof of Concept (PoC)</h2>
+            <p>The application's <code>category</code> parameter was exploited using a UNION-based payload specifically designed to query the hidden <code>users</code> table and extract the username and password columns.</p>
+            
+            <p><strong>Target Endpoint:</strong> <code>GET /filter?category=</code></p>
+            
+            <p><strong>The Master Key Payload:</strong></p>
+            <div class="payload-block">
+                Gifts'+UNION+SELECT+username,+password+FROM+users-- HTTP/1.1
+            </div>
+
+            <p><strong>The Result:</strong> The backend server processed the malicious query and returned a 200 OK status. The complete list of usernames and their corresponding passwords was leaked in plain text within the application's HTML response.</p>
+
+            <div class="report-image-box">
+                <img src="assets/images/burp-payload.png" alt="Burp Suite Payload Execution">
+                <span class="report-caption">Figure 1.0: Burp Suite Repeater intercept confirming successful data exfiltration.</span>
+            </div>
+
+            <h3>Post-Exploitation (Account Takeover)</h3>
+            <p>The extracted credentials were then used to successfully authenticate into the application's login portal as the administrator, granting unrestricted access to the system.</p>
+
+            <div class="report-image-box">
+                <img src="assets/images/burp-leak.png" alt="Account Takeover Confirmation">
+                <span class="report-caption">Figure 1.1: Unrestricted administrative access achieved using the exfiltrated credentials.</span>
+            </div>
+        </div>
+
+        <div class="report-section">
+            <h2>3. Strategic Remediation & Critical Fixes</h2>
+            <p>To secure this infrastructure and protect against immediate data breaches, the following actions must be taken immediately:</p>
+            <ul>
+                <li style="margin-bottom: 15px; color: #ccc;"><strong>Primary Fix (Code Level):</strong> The development team must completely eradicate dynamic SQL queries and instantly migrate to Parameterized Queries (Prepared Statements). This strips the attacker's input of executable privileges.</li>
+                <li style="color: #ccc;"><strong>Secondary Finding (Plain-Text Passwords):</strong> The database is currently storing passwords in plain text. This is a severe compliance violation. All stored passwords must be immediately hashed and salted using strong, modern cryptographic algorithms (such as Argon2 or bcrypt).</li>
+            </ul>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
