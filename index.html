@@ -42,15 +42,57 @@
             <h2 class="glitch-text" data-text="Web Security Specialist">Web Security Specialist</h2>
             
             <p class="bio-text">
-                Results-oriented Cyber Security Analyst. I bridge the gap between 
-                <span class="highlight">Red Team</span> attacks and <span class="highlight">Blue Team</span> defense.
+                I help startups and growing teams secure web applications by turning
+                <span class="highlight">offensive testing</span> into measurable
+                <span class="highlight">defensive outcomes</span>.
             </p>
             
             <div class="btn-group">
                 <a href="#projects" class="btn primary">View Operations</a>
-                <a href="documents/Alfred_Daniel_CV.pdf" download class="btn secondary">
-                    <i class="fa-solid fa-file-pdf"></i> Download CV
+                <a href="#contact" class="btn secondary">
+                    <i class="fa-solid fa-shield-halved"></i> Request Security Assessment
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2 class="section-title" data-aos="fade-right">_Intel_Profile</h2>
+        <div class="about-grid">
+            <div class="card" data-aos="fade-up">
+                <h3>Operator Summary</h3>
+                <p>I am Alfred Daniel, a web security specialist focused on reducing attack surface and accelerating secure delivery for web products.</p>
+                <p><strong>Primary Domains:</strong> Web App Security Testing, Phishing Analysis, and Secure Development Practices.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <h3>Toolchain</h3>
+                <p><strong>Assessment:</strong> Burp Suite, manual exploit analysis, HTTP traffic tampering.</p>
+                <p><strong>Engineering:</strong> Python automation, API integrations, JavaScript workflows.</p>
+                <p><strong>Defense:</strong> Detection tuning, secure coding baselines, mitigation reporting.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Proof of Capability</h3>
+                <p><strong>Focus:</strong> Turning critical findings into prioritized remediation plans.</p>
+                <p><strong>Output:</strong> Technical reports, exploit narratives, and mitigation playbooks.</p>
+                <a href="documents/Alfred_Daniel_CV.pdf" download class="proof-link">Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="capabilities">
+        <h2 class="section-title" data-aos="fade-right">_Core_Capabilities</h2>
+        <div class="capability-grid">
+            <div class="capability-item" data-aos="zoom-in">
+                <h3>Attack Surface Assessment</h3>
+                <p>Identify and prioritize exploitable web-layer risks before release.</p>
+            </div>
+            <div class="capability-item" data-aos="zoom-in" data-aos-delay="100">
+                <h3>Threat-Led Validation</h3>
+                <p>Validate real-world exploit paths and map findings to business impact.</p>
+            </div>
+            <div class="capability-item" data-aos="zoom-in" data-aos-delay="200">
+                <h3>Secure Engineering Guidance</h3>
+                <p>Provide practical fixes teams can ship quickly with confidence.</p>
             </div>
         </div>
     </section>
@@ -66,9 +108,10 @@
                     <h3 style="color: #fff;">SQLi Intel Report</h3>
                 </div>
                 <div class="case-study-content">
-                    <p><strong>Target:</strong> E-commerce Category Filter.</p>
-                    <p><strong>Exploit:</strong> UNION-Based SQL Injection.</p>
-                    <p><strong>Impact:</strong> Full Data Exfiltration & ATO.</p>
+                    <p><strong>Problem:</strong> E-commerce category filter exposed SQL query execution.</p>
+                    <p><strong>Approach:</strong> UNION-based payload chaining through intercepted Burp requests.</p>
+                    <p><strong>Impact:</strong> Demonstrated full data exfiltration and account takeover path.</p>
+                    <p><strong>Role:</strong> Lead analyst for exploit validation and mitigation guidance.</p>
                 </div>
                 <div class="tags" style="margin-bottom: 20px;">
                     <span style="border-color: #ff003c; color: #ff003c;">Critical CVSS: 10.0</span><span>Burp Suite</span>
@@ -84,13 +127,15 @@
                     <h3>Vulnex Link-Guard</h3>
                 </div>
                 <div class="case-study-content">
-                    <p><strong>Mission:</strong> Detect malicious phishing URLs in real-time.</p>
-                    <p><strong>Stack:</strong> Python, Threat Intel API.</p>
-                    <p><strong>Impact:</strong> Reduced false positives by 95% using header analysis.</p>
+                    <p><strong>Problem:</strong> High false positives in phishing URL triage workflows.</p>
+                    <p><strong>Approach:</strong> Built Python pipeline with threat intelligence API enrichment.</p>
+                    <p><strong>Impact:</strong> Reduced false positives by 95% using layered header analysis.</p>
+                    <p><strong>Role:</strong> Designed detection logic and authored validation tests.</p>
                 </div>
                 <div class="tags">
                     <span>Python</span><span>Security</span><span>API</span>
                 </div>
+                <a href="https://github.com/Vulnex279" target="_blank" class="proof-link">View Related Work</a>
             </div>
 
             <div class="card" data-aos="zoom-in" data-aos-delay="200">
@@ -99,13 +144,15 @@
                     <h3>Ultimate Messenger</h3>
                 </div>
                 <div class="case-study-content">
-                    <p><strong>Mission:</strong> Create a zero-knowledge communication channel.</p>
-                    <p><strong>Stack:</strong> WebSockets, AES Encryption.</p>
-                    <p><strong>Impact:</strong> Prevented Man-in-the-Middle attacks via E2EE.</p>
+                    <p><strong>Problem:</strong> Need for private messaging without server-side plaintext exposure.</p>
+                    <p><strong>Approach:</strong> Built WebSocket channel secured with AES-based end-to-end encryption.</p>
+                    <p><strong>Impact:</strong> Reduced interception risk and blocked practical MITM visibility.</p>
+                    <p><strong>Role:</strong> Implemented secure channel architecture and key exchange flow.</p>
                 </div>
                 <div class="tags">
                     <span>WebSockets</span><span>Encryption</span><span>JS</span>
                 </div>
+                <a href="#contact" class="proof-link">Request Architecture Brief</a>
             </div>
 
             <div class="card" data-aos="zoom-in" data-aos-delay="300">
@@ -114,13 +161,15 @@
                     <h3>Project Vision</h3>
                 </div>
                 <div class="case-study-content">
-                    <p><strong>Mission:</strong> Next-Gen Biometric Authentication Interface.</p>
-                    <p><strong>Stack:</strong> React, UI/UX Design.</p>
-                    <p><strong>Impact:</strong> Seamless secure access control.</p>
+                    <p><strong>Problem:</strong> Legacy authentication flow produced user friction and weak trust cues.</p>
+                    <p><strong>Approach:</strong> Designed React-based biometric-first interface with security-first UX.</p>
+                    <p><strong>Impact:</strong> Improved secure access usability and reduced login abandonment risk.</p>
+                    <p><strong>Role:</strong> Led UI threat modeling and interaction design standards.</p>
                 </div>
                 <div class="tags">
                     <span>UI/UX</span><span>React</span><span>Auth</span>
                 </div>
+                <a href="#contact" class="proof-link">Discuss Implementation</a>
             </div>
         </div>
     </section>

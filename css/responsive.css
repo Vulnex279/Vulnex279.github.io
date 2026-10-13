@@ -20,7 +20,7 @@
     .links a { margin-left: 0; }
 
     /* 3. Stack the Grid Layouts */
-    .project-grid, .about-grid {
+    .project-grid, .about-grid, .capability-grid {
         grid-template-columns: 1fr; /* Force 1 column */
         display: flex;
         flex-direction: column;
@@ -30,6 +30,16 @@
     .hero {
         height: auto;
         padding: 100px 20px;
+    }
+
+    .about, .capabilities, .projects, .contact {
+        padding: 60px 20px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 320px;
+        box-sizing: border-box;
     }
 
     /* 5. Center the Profile Picture */
