@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intel Report | Advanced SQLi</title>
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2913/2913133.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,7 +17,6 @@
 </head>
 <body>
     <div class="scanlines"></div>
-    <div id="particles-js"></div>
 
     <nav>
         <div class="logo">VULNEX<span class="dot">.</span>IO</div>
@@ -52,7 +55,7 @@
             <p><strong>The Result:</strong> The backend server processed the malicious query and returned a 200 OK status. The complete list of usernames and their corresponding passwords was leaked in plain text within the application's HTML response.</p>
 
             <div class="report-image-box">
-                <img src="assets/images/burp-payload.png" alt="Burp Suite Payload Execution">
+                <img src="assets/images/burp-payload.png" alt="Burp Suite Payload Execution" loading="lazy" decoding="async" width="1280" height="720">
                 <span class="report-caption">Figure 1.0: Burp Suite Repeater intercept confirming successful data exfiltration.</span>
             </div>
 
@@ -60,7 +63,7 @@
             <p>The extracted credentials were then used to successfully authenticate into the application's login portal as the administrator, granting unrestricted access to the system.</p>
 
             <div class="report-image-box">
-                <img src="assets/images/burp-leak.png" alt="Account Takeover Confirmation">
+                <img src="assets/images/burp-leak.png" alt="Account Takeover Confirmation" loading="lazy" decoding="async" width="1280" height="720">
                 <span class="report-caption">Figure 1.1: Unrestricted administrative access achieved using the exfiltrated credentials.</span>
             </div>
         </div>
@@ -75,7 +78,6 @@
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
