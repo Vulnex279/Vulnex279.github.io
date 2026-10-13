@@ -54,8 +54,99 @@ h1 { font-size: 3.5rem; margin: 0; letter-spacing: -2px; color: #fff; }
 .btn.secondary:hover { background: rgba(0, 255, 65, 0.1); }
 
 /* PROJECTS & CARDS */
-.projects, .contact { padding: 80px 10%; }
+.about, .capabilities, .trust, .projects, .contact { padding: 80px 10%; }
 .section-title { font-size: 2rem; border-left: 5px solid var(--neon); padding-left: 20px; margin-bottom: 40px; color: #fff; }
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.about-grid .card h3 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.capability-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.capability-item {
+    background: var(--glass);
+    border: 1px solid #333;
+    padding: 24px;
+}
+
+.capability-item h3 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.capability-item p {
+    margin-bottom: 0;
+    color: #c7c7c7;
+    line-height: 1.6;
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.trust-grid ul {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.7;
+    color: #cfcfcf;
+}
+
+.metric-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.metric-item {
+    border: 1px solid #333;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.metric-item strong {
+    color: var(--neon);
+    display: block;
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+}
+
+.metric-item span {
+    color: #c7c7c7;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.testimonial-box {
+    margin-top: 30px;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    background: rgba(0, 255, 65, 0.05);
+    padding: 24px;
+    text-align: center;
+}
+
+.testimonial-box p {
+    margin: 0 0 8px 0;
+    color: #f1f1f1;
+    line-height: 1.7;
+}
+
+.testimonial-box span {
+    color: var(--neon);
+    font-size: 0.85rem;
+}
 
 .project-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
@@ -65,8 +156,25 @@ h1 { font-size: 3.5rem; margin: 0; letter-spacing: -2px; color: #fff; }
 }
 .card:hover { transform: translateY(-10px); border-color: var(--neon); box-shadow: 0 10px 30px -10px rgba(0, 255, 65, 0.2); }
 .card-header i { font-size: 2rem; color: var(--neon); margin-bottom: 15px; }
+.card-header h3 { margin: 0 0 10px 0; color: #fff; }
+.case-study-content p { margin: 0 0 12px 0; line-height: 1.6; }
 .tags span {
     font-size: 0.7rem; border: 1px solid #555; padding: 5px 10px; margin-right: 5px; border-radius: 20px; display: inline-block; margin-top: 10px;
+}
+
+.proof-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--neon);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(0, 255, 65, 0.6);
+    padding-bottom: 2px;
+    font-size: 0.9rem;
+}
+
+.proof-link:hover {
+    color: #fff;
+    border-bottom-color: #fff;
 }
 
 /* === NEW CODE FOR PROJECT IMAGE === */
@@ -92,7 +200,43 @@ h1 { font-size: 3.5rem; margin: 0; letter-spacing: -2px; color: #fff; }
 .contact { text-align: center; }
 .contact-box { background: var(--glass); padding: 50px; border: 1px solid var(--neon); display: inline-block; width: 100%; max-width: 600px; }
 .email-link { display: block; font-size: 1.2rem; color: var(--neon); margin: 20px 0; }
-.socials a { color: #fff; text-decoration: none; font-size: 1.2rem; }
+.socials {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+.socials a { color: #fff; text-decoration: none; font-size: 1rem; }
+.social-placeholder { color: #8a8a8a; font-size: 1rem; }
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: #101010;
+    border: 1px solid #2b2b2b;
+    color: #fff;
+    font-family: var(--font-main);
+    padding: 12px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--neon);
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.15);
+}
+
+.contact-form .btn {
+    margin: 10px 0 0 0;
+    cursor: pointer;
+}
 
 /* FOOTER */
 footer { text-align: center; padding: 20px; font-size: 0.8rem; color: #555; border-top: 1px solid #333; }
