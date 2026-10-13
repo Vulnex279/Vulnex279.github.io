@@ -1,10 +1,15 @@
 /* INITIALIZE ANIMATE ON SCROLL (AOS)
    This makes elements fade in when you scroll down.
 */
-AOS.init({
-    duration: 1000, // Animation lasts 1 second
-    once: true      // Animation only happens once per scroll
-});
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (typeof AOS !== "undefined") {
+    AOS.init({
+        duration: prefersReducedMotion ? 0 : 700,
+        once: true,
+        disable: prefersReducedMotion
+    });
+}
 
 
 /* THE DECRYPTION EFFECT
@@ -14,10 +19,21 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%&";
 const hackerText = document.querySelector("#hacker-text");
 
 if (hackerText) {
-    hackerText.onmouseover = event => {  
+    let activeInterval;
+
+    hackerText.onmouseenter = event => {
+        if (prefersReducedMotion) {
+            event.target.innerText = event.target.dataset.value;
+            return;
+        }
+
+        if (activeInterval) {
+            clearInterval(activeInterval);
+        }
+
         let iteration = 0;
         
-        const interval = setInterval(() => {
+        activeInterval = setInterval(() => {
             event.target.innerText = event.target.innerText
             .split("")
             .map((letter, index) => {
@@ -30,10 +46,10 @@ if (hackerText) {
             .join("");
             
             if(iteration >= event.target.dataset.value.length){ 
-                clearInterval(interval);
+                clearInterval(activeInterval);
             }
             
             iteration += 1 / 3;
-        }, 30); // Speed of the scramble
+        }, 35);
     }
 }

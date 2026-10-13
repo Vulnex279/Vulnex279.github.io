@@ -12,6 +12,8 @@ body {
     font-family: var(--font-main);
     margin: 0; padding: 0;
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* SCANLINE MONITOR EFFECT */
@@ -55,6 +57,10 @@ h1 { font-size: 3.5rem; margin: 0; letter-spacing: -2px; color: #fff; }
 
 /* PROJECTS & CARDS */
 .about, .capabilities, .trust, .projects, .contact { padding: 80px 10%; }
+.about, .capabilities, .trust, .projects, .contact {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
+}
 .section-title { font-size: 2rem; border-left: 5px solid var(--neon); padding-left: 20px; margin-bottom: 40px; color: #fff; }
 
 .about-grid {
@@ -188,6 +194,11 @@ h1 { font-size: 3.5rem; margin: 0; letter-spacing: -2px; color: #fff; }
     display: block;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* GLITCH EFFECT */
 .glitch-text { position: relative; color: white; font-size: 1.5rem; margin: 10px 0; }
 .glitch-text::before, .glitch-text::after {
@@ -245,6 +256,21 @@ footer { text-align: center; padding: 20px; font-size: 0.8rem; color: #555; bord
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 @keyframes glitch-anim-1 { 0% { clip: rect(20px, 9999px, 80px, 0); } 100% { clip: rect(100px, 9999px, 20px, 0); } }
 @keyframes glitch-anim-2 { 0% { clip: rect(100px, 9999px, 30px, 0); } 100% { clip: rect(20px, 9999px, 90px, 0); } }
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .scanlines,
+    .glitch-text::before,
+    .glitch-text::after {
+        display: none;
+    }
+}
 /* =========================================
    THREAT INTEL REPORT PAGE STYLES (Phase 3)
    ========================================= */
